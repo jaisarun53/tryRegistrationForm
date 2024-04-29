@@ -18,14 +18,20 @@ export const registerValidationSchema = Yup.object({
     .min(6, "Password must be at least 6 characters.")
     .max(20, "Password must be at max 20 characters.")
     .required("Password is required."),
-  role: Yup.string()
-    .required("Role is required.")
-    .trim()
-    .oneOf(["buyer", "seller"], "Role must be either buyer or seller."),
+  confirmPassword: Yup.string().oneOf(
+    [Yup.ref("password"), null],
+    "Password must match"
+  ),
   gender: Yup.string()
     .trim()
+    .required("Gender is required")
     .oneOf(
       ["male", "female", "preferNotToSay"],
       "Gender must be either male or female or preferNotToSay."
     ),
+  location: Yup.string()
+    .trim()
+    .required("Location must be required.")
+    .min(3, "Location must be atleast of three characters.")
+    .max(55, "Location must be at max 55 characters"),
 });
