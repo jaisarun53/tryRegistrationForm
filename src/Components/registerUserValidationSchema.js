@@ -26,7 +26,7 @@ export const registerValidationSchema = Yup.object({
     .trim()
     .required("Gender is required")
     .oneOf(
-      ["male", "female", "preferNotToSay"],
+      ["Male", "Female", "Others"],
       "Gender must be either male or female or preferNotToSay."
     ),
   location: Yup.string()
